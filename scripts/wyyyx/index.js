@@ -11,9 +11,9 @@ const Authorization = config.wyyyx.Authorization
 const headers = {
   headers: {
     Authorization:
-      Authorization || " bearer xxxxxx",
-    "user-agent":
-      userAgent || "Dalvik/2.1.0 (Linux; U; Android 11; Redmi K20 Pro Premium Edition Build/RKQ1.200826.002)"
+      Authorization || 'bearer xxxxxx',
+    'user-agent':
+      userAgent || defaltUserAgent
   }
 }
 
@@ -34,7 +34,7 @@ function sign(){
     logInfo(taskName,'签到成功')
   }).catch((err)=>{
     logInfo(taskName, err)
-    logInfo(taskName,'签到失败')
+    logInfo(taskName,'签到失败,已签到或其他原因')
   })
 }
 
