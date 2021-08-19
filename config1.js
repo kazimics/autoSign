@@ -1,16 +1,16 @@
 let config = {
   // 自定义的 userAgent
-  userAgent: "",
+  userAgent: '',
   // 要执行的任务列表，将自己需要执行的任务放入 taskList
-  taskList:["wyyyx","smzdm"],
+  taskList: ['wyyyx', 'smzdm'],
   // 网易云游戏
   wyyyx: {
-    Authorization: ""
+    Authorization: ''
   },
   // 什么值得买
   smzdm: {
-    cookie: ""
-  },
+    cookie: ''
+  }
 }
 
 module.exports = config
