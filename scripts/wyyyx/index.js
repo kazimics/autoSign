@@ -45,7 +45,7 @@ function sign() {
 async function wyyyx() {
   await checkCookie()
   if (checkState) {
-   await sign()
+    await sign()
   }
 }
 
