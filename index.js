@@ -12,6 +12,7 @@ start(taskList)
 async function start(taskList) {
   console.log('—————————————开始执行签到任务—————————————')
   for (let i = 0; i < taskList.length; i++) {
+    console.log(`-------------------------`)
     console.log(`${taskList[i]}任务执行中...`)
     let isHaveScript = fs.existsSync(`./scripts/${taskList[i]}`)
     if (isHaveScript) {

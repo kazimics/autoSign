@@ -21,7 +21,7 @@ function sign() {
       if (res.data.error_code == 0) {
         logInfo(taskName, `签到成功，连续签到${res.data.data.checkin_num}天`)
       } else {
-        logInfo(taskName, res.data.error_msg)
+        logInfo(taskName, `签到失败，${res.data.error_msg}`)
       }
     })
     .catch(err => {
