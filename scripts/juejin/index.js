@@ -3,6 +3,10 @@ const { logInfo } = require('../tools')
 
 const signUrl =
   'https://api.juejin.cn/growth_api/v1/check_in'
+
+const drawUrl =
+  'https://api.juejin.cn/growth_api/v1/lottery/draw'
+
 const taskName = '掘金'
 
 const cookie = config.juejin.cookie
@@ -23,12 +27,15 @@ const headers = {
   }
 }
 
+let signRslt = false
+
 function sign() {
   return axios
     .post(signUrl,'', headers)
     .then(res => {
       if (res.data.err_no == 0) {
         logInfo(taskName, `签到成功，获得${res.data.data.incr_point}矿石`)
+        signRslt = true
       } else {
         logInfo(taskName, `签到失败，${res.data.err_msg}`)
       }
@@ -39,8 +46,28 @@ function sign() {
     })
 }
 
+function draw(){
+  return axios
+    .post(drawUrl,'', headers)
+    .then(res => {
+      if (res.data.err_no == 0) {
+        logInfo(taskName, `抽奖成功，获得${res.data.lottery_name}`)
+      } 
+      else {
+        logInfo(taskName, `抽奖失败，${res.err_msg}`)
+      }
+    })
+    .catch(err => {
+      logInfo(taskName, err)
+      logInfo(taskName, '抽奖失败，cookie失效或其他原因')
+    })
+}
+
 async function juejin() {
   await sign()
+  if(signRslt){
+    await draw()
+  }
 }
 
 module.exports = juejin
